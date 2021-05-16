@@ -4,7 +4,6 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <style type="text/css">
-        @import url("http://localhost:5000/clock.css");
         .hand {
             transform-origin: 100px 100px;
             animation-iteration-count: infinite;
