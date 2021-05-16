@@ -27,10 +27,10 @@
         }
         @keyframes rotate {
             from {
-                transform: rotate(calc(var(--init, 0) - 360deg));
+                transform: rotate(calc(var(--init, 0deg) - 360deg));
             }
             to {
-                transform: rotate(var(--init, 0));
+                transform: rotate(var(--init, 0deg));
             }
         }
     </style>
