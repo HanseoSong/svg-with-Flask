@@ -27,10 +27,10 @@
         }
         @keyframes rotate {
             from {
-                transform: rotate(calc(var(--init) - 360deg));
+                transform: rotate(calc(var(--init, 0) - 360deg));
             }
             to {
-                transform: rotate(var(--init));
+                transform: rotate(var(--init, 0));
             }
         }
     </style>
@@ -44,6 +44,7 @@
             <circle cx="105" cy="105" r="95" fill="#000"/>
         </mask>
     </defs>
+    <circle cx="100" cy="100" r="95" fill="#fff"/>
     <circle cx="100" cy="100" r="95" fill="#ddd" mask="url(#shadow)"/>
     <rect width="200" height="200" fill="#444" mask="url(#circle)"/>
     <g transform="translate(5 5)">
