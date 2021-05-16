@@ -1,0 +1,59 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="200" width="200"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style type="text/css">
+        @import url("http://localhost:5000/clock.css");
+        .hand {
+            transform-origin: 100px 100px;
+            animation-iteration-count: infinite;
+            animation-name: rotate;
+        }
+        .second {
+            --init: {{time.second * 6}}deg;
+            animation-duration: 60s;
+            animation-timing-function: steps(60, end);
+        }
+        .minute {
+            --init: {{time.minute * 6 + time.second / 10}}deg;
+            animation-duration: 3600s;
+            animation-timing-function: linear;
+        }
+        .hour {
+            --init: {{time.hour * 30 + time.minute / 2 + time.second / 120 }}deg;
+            animation-duration: 43200s;
+            animation-timing-function: linear;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(calc(var(--init) - 360deg));
+            }
+            to {
+                transform: rotate(var(--init));
+            }
+        }
+    </style>
+    <defs>
+        <mask id="circle">
+            <circle cx="100" cy="100" r="100" fill="#fff"/>
+            <circle cx="100" cy="100" r="95" fill="#000"/>
+        </mask>
+        <mask id="shadow">
+            <circle cx="100" cy="100" r="95" fill="#fff"/>
+            <circle cx="105" cy="105" r="95" fill="#000"/>
+        </mask>
+    </defs>
+    <circle cx="100" cy="100" r="95" fill="#ddd" mask="url(#shadow)"/>
+    <rect width="200" height="200" fill="#444" mask="url(#circle)"/>
+    <g transform="translate(5 5)">
+        <line x1="100" x2="100" y1="100" y2="20" stroke="#ddd" stroke-width="5" stroke-linecap="round" class="minute hand"/>
+        <line x1="100" x2="100" y1="100" y2="40" stroke="#ddd" stroke-width="6" stroke-linecap="round" class="hour hand"/>
+        <line x1="100" x2="100" y1="120" y2="15" stroke="#ddd" stroke-width="2" stroke-linecap="round" class="second hand"/>
+        <circle cx="100" cy="100" r="5" fill="#ddd"/>
+    </g>
+    <line x1="100" x2="100" y1="100" y2="20" stroke="#444" stroke-width="5" stroke-linecap="round" class="minute hand"/>
+    <line x1="100" x2="100" y1="100" y2="40" stroke="#444" stroke-width="6" stroke-linecap="round" class="hour hand"/>
+    <line x1="100" x2="100" y1="120" y2="15" stroke="#f44" stroke-width="2" stroke-linecap="round" class="second hand"/>
+    <circle cx="100" cy="100" r="5" fill="#444"/>
+</svg>
