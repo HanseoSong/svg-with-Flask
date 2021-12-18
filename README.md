@@ -4,6 +4,6 @@ some svg animations with flask
 
 ## clock
 
-[![clock](https://hssong.pythonanywhere.com/clock/0)](https://hssong.pythonanywhere.com/clock/0)
+`![clock](https://hssong.pythonanywhere.com/clock?timezone={timezone})`
 
-(UTC/GMT)
+![clock](https://hssong.pythonanywhere.com/clock?timezone=0)(UTC+0)

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 from datetime import datetime, timezone, timedelta
 
 def create_app():
@@ -11,9 +11,10 @@ def create_app():
         r.headers['Expires'] = '0'
         return r
 
-    @app.route('/clock/<tmz>')
-    def clock(tmz):
-        tmz=float(tmz)
+    @app.route('/clock')
+    def clock():
+        tmz=request.args.get('timezone', type=float)
+        if tmz==None: tmz=0
         return Response(
             render_template('clock.svg', time=datetime.now(timezone(timedelta(hours=tmz)))), 
             mimetype='image/svg+xml'
