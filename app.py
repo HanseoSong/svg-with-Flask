@@ -13,7 +13,7 @@ def create_app():
 
     @app.route('/clock/<tmz>')
     def clock(tmz):
-        tmz=int(tmz)
+        tmz=float(tmz)
         return Response(
             render_template('clock.svg', time=datetime.now(timezone(timedelta(hours=tmz)))), 
             mimetype='image/svg+xml'
